@@ -8,6 +8,11 @@ WORKDIR /data
 VOLUME /data
 
 EXPOSE 80
+
 ADD run.sh /run.sh
-ENTRYPOINT ["bash", "/run.sh"]
-CMD []
+RUN chmod +x /run.sh
+
+#ENTRYPOINT ["bash", "/run.sh"]
+#CMD []
+
+CMD [ "bash", "/run.sh" ]

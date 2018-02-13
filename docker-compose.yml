@@ -11,6 +11,12 @@ services:
             
     site1:
         build: ./site1/
+        tty: true
+        entrypoint:
+            - /run.sh
+            - /bin/bash
+        ports:
+          - "81:81"
         networks:
             - web
 
