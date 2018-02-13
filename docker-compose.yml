@@ -13,8 +13,8 @@ services:
         build: ./site1/
         tty: true
         entrypoint:
-            - /run.sh
             - /bin/bash
+            - /run.sh
         ports:
           - "81:81"
         networks:

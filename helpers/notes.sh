@@ -65,4 +65,7 @@ ping dispatcherreverse3_site1_1
 
 
 
+
 docker run -d -p 80:80 -v /tmp/perezpardojc/dispatcher-reverse-3/site1/data/db.json:/data/db.json clue/json-server
+docker run -d -p 80:80 -v /tmp/perezpardojc/dispatcher-reverse-3/site1/data/db.json:/data/db.json dispatcherreverse3_site1
+docker run -d -p 81:81 -v /tmp/perezpardojc/dispatcher-reverse-3/site1/data/db.json:/data/db.json dispatcherreverse3_site1
