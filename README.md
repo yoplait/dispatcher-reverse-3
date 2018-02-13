@@ -38,4 +38,7 @@ docker-compose down
 
 ### Readay to test
 
-You cal curl localhost
+You can curl localhost
+
+
+

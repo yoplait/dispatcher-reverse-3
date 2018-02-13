@@ -60,4 +60,9 @@ docker network connect dispatcherreverse1_web upbeat_yonath
 
 ping dispatcherreverse1_site2_1
 ping dispatcherreverse1_site1_1
+ping dispatcherreverse2_site1_1
+ping dispatcherreverse3_site1_1
 
+
+
+docker run -d -p 80:80 -v /tmp/perezpardojc/dispatcher-reverse-3/site1/data/db.json:/data/db.json clue/json-server

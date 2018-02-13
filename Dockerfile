@@ -20,10 +20,10 @@ RUN cp "./dispatcher/dispatcher-apache2.2-4.2.3.so" "/etc/httpd/modules/dispatch
 RUN ln -s /etc/httpd/modules/dispatcher-apache2.2-4.2.3.so /etc/httpd/modules/mod_dispatcher.so
 
 # Add config files
-ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-2/master/httpd/httpd.conf /etc/httpd/conf/httpd.conf
-ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-2/master/rules/dispatcher.any /etc/httpd/conf/dispatcher.any
-ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-2/master/rules/cache.any /etc/httpd/conf/cache.any
-ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-2/master/rules/filter.any /etc/httpd/conf/filter.any
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-3/master/httpd/httpd.conf /etc/httpd/conf/httpd.conf
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-3/master/rules/dispatcher.any /etc/httpd/conf/dispatcher.any
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-3/master/rules/cache.any /etc/httpd/conf/cache.any
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-3/master/rules/filter.any /etc/httpd/conf/filter.any
     
 
 CMD ["-D", "FOREGROUND"]
