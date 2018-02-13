@@ -1,0 +1,92 @@
+# Each farm configures a set of load balanced renders (i.e. remote servers)
+/farms
+  {
+  # First farm entry
+  /website
+    {
+    # Request headers that should be forwarded to the remote server.
+    /clientheaders
+      {
+      # Forward all request headers that are end-to-end. If you want
+      # to forward a specific set of headers, you'll have to list
+      # them here.
+      "*"
+      }
+
+    # Hostname globbing for farm selection (virtual domain addressing)
+    /virtualhosts
+      {
+      # Entries will be compared against the "Host" request header
+      # and an optional request URL prefix.
+      #
+      # Examples:
+      #
+      #   www.company.com
+      #   intranet.*
+      #   myhost:8888/mysite
+      "*"
+      }
+
+    # The load will be balanced among these render instances
+    /renders
+      {
+      /rend01
+        {
+        # Hostname or IP of the render
+        #/hostname publisher
+        /hostname dispatcherreverse3_site1_1
+        # Port of the render
+        #/port "4503"
+        /port "80"
+        # Connect timeout in milliseconds, 0 to wait indefinitely
+        # /timeout "0"
+        }
+      }
+
+    # The filter section defines the requests that should be handled by the dispatcher.
+    #
+    # Entries can be either specified using globs, or elements of the request line:
+    #
+    # (1) globs will be compared against the entire request line, e.g.:
+    #
+    #     /0001 { /type "deny" /glob "* /index.html *" }
+    #
+    #   matches request "GET /index.html HTTP/1.1" but not "GET /index.html?a=b HTTP/1.1".
+    #
+    # (2) method/url/query/protocol will be compared againts the respective elements of
+    #   the request line, e.g.:
+    #
+    #     /0001 { /type "deny" /method "GET" /url "/index.html" }
+    #
+    #   matches both "GET /index.html" and "GET /index.html?a=b HTTP/1.1".
+    #
+    # Note: specifying elements of the request line is the preferred method.
+    /filter
+      {
+      $include "filter.any"
+      }
+
+    # The cache section regulates what responses will be cached and where.
+    /cache
+      {
+      $include "cache.any"
+      }
+
+    # The statistics sections dictates how the load should be balanced among the
+    # renders according to the media-type.
+    /statistics
+      {
+      /categories
+        {
+        /html
+          {
+          /glob "*.html"
+          }
+        /others
+          {
+          /glob "*"
+          }
+        }
+      }
+    }
+  }
